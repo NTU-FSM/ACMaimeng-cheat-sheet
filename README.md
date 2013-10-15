@@ -26,4 +26,5 @@ RMQ(Range Minimum Query)
 ------------------------
 [for LCA(Lowest Common Ancestor)](http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=lowestCommonAncestor)
 
-
+差分约束系统(?)
+---------------
