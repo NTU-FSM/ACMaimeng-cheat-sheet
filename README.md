@@ -33,3 +33,11 @@ RMQ(Range Minimum Query)
 Astar搜索(A*搜索)
 -----------------
         还不会，需要学
+
+Set(?)
+------
+
+String (Regular Expression)
+------------------
+        
+
