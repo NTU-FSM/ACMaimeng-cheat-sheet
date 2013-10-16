@@ -1,8 +1,7 @@
 ACM-cheat-sheet
 ===============
 
-Buffered Input
---------------
+####Buffered Input
 ```java
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
@@ -17,30 +16,24 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 
 
-线段树(Segment Tree)
---------------------
+####线段树(Segment Tree)
 ```java
 ```
 
-RMQ(Range Minimum Query)
-------------------------
+####RMQ(Range Minimum Query)
 [for LCA(Lowest Common Ancestor)](http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=lowestCommonAncestor)
 
-差分约束系统(?)
----------------
+####差分约束系统(?)
         不会，需要学
 
-Astar搜索(A*搜索)
------------------
+####Astar搜索(A*搜索)
         还不会，需要学
 
-Set(?)
-------
+####Set(?)
 ```java
 ```
 
-String (Regular Expression)
-------------------
+####String (Regular Expression)
 ```java
 ```
         
