@@ -106,6 +106,9 @@ dist = new int[N + 1];
     }
 ```
 
+####最大流 Maxflow
+```java
+```
 #数学 Mathematic
 
 ####Miller-Rabbin Prime test
