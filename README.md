@@ -4,6 +4,9 @@ ACM-cheat-sheet
 #基础 Basic
 ####Buffered Input
 ```java
+import java.io.*;
+```
+```java
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int T = Integer.parseInt(br.readLine());
     String[] data;
