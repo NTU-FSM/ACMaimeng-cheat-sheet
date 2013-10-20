@@ -51,12 +51,48 @@ for (int i = 0; i < M; i++) {
 ```
 
 #数据结构 Data Structure
+
 ####Set(?)
 ```java
 ```
 
+
 ####TreeMap
 ```java
+//Constructor and Description
+TreeMap()
+Constructs a new, empty tree map, using the natural ordering of its keys.
+
+//Modifier and Type    Method and Description
+boolean	containsKey(Object key)
+Returns true if this map contains a mapping for the specified key.
+
+boolean	containsValue(Object value)
+Returns true if this map maps one or more keys to the specified value.
+
+K	firstKey()
+Returns the first (lowest) key currently in this map.
+
+V	get(Object key)
+Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+
+Set<K>	keySet()
+Returns a Set view of the keys contained in this map.
+
+K	lastKey()
+Returns the last (highest) key currently in this map.
+
+V	put(K key, V value)
+Associates the specified value with the specified key in this map.
+
+void	putAll(Map<? extends K,? extends V> map)
+Copies all of the mappings from the specified map to this map.
+
+V	remove(Object key)
+Removes the mapping for this key from this TreeMap if present.
+
+int	size()
+Returns the number of key-value mappings in this map.
 ```
 
 ####线段树(Segment Tree)
