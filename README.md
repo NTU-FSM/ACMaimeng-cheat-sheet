@@ -31,6 +31,7 @@ class Edge {
         this.l = l;
     }
 }
+public static ArrayList<ArrayList<Edge>> map;
 ```
 ```java
 for (int i = 0; i < N; i++) {
