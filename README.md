@@ -120,7 +120,53 @@ Returns the number of key-value mappings in this map.
 
 ####RMQ(Range Minimum Query)
 [for LCA(Lowest Common Ancestor)](http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=lowestCommonAncestor)
+```java
+void process2(int M[MAXN][LOGMAXN], int A[MAXN], int N) {
+    int i, j;
+    //initialize M for the intervals with length 1
+    for (i = 0; i < N; i++)
+        M[i][0] = i;
+    //compute values from smaller to bigger intervals
+    for (j = 1; 1 << j <= N; j++)
+        for (i = 0; i + (1 << j) - 1 < N; i++)
+            if (A[M[i][j - 1]] < A[M[i + (1 << (j - 1))][j - 1]])
+                M[i][j] = M[i][j - 1];
+            else
+                M[i][j] = M[i + (1 << (j - 1))][j - 1];
+}
 
+
+public static int rmq(int l, int r) {
+    int j = (int)(Math.log(r - l + 1) / Math.log(2));
+    int len = 1 << j;
+    return nodeDepth[dp[l][j]] < nodeDepth[dp[r - len + 1][j]] ? dp[l][j] : dp[r - len + 1][j];
+}
+
+public static int lca(int x, int y) {
+    int ans;
+    if (nodePosition[x] > nodePosition[y]) {
+        ans = rmq(nodePosition[y], nodePosition[x]);
+    } else {
+        ans = rmq(nodePosition[x], nodePosition[y]);
+    }
+    return visitOder[ans] + 1;
+}
+```
+```java
+public static void dfs(int currentNode, int depth) {
+        visited[currentNode] = true;
+        nodeDepth[tot] = depth;
+        visitOder[tot] = currentNode;
+        nodePosition[currentNode] = tot++;
+        for (int child : map.get(currentNode)) {
+            if (!visited[child]) {
+                dfs(child, depth + 1);
+                visitOder[tot] = currentNode;
+                nodeDepth[tot++] = depth;
+            }
+        }
+    }
+```
 
 #算法 algorithm
 ####差分约束系统(?)
