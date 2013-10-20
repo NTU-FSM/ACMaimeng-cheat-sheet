@@ -54,6 +54,25 @@ for (int i = 0; i < M; i++) {
 
 ####Set(?)
 ```java
+//Constructor and Description
+TreeSet()
+Constructs a new, empty tree set, sorted according to the natural ordering of its elements.
+
+//Modifier and Type	Method and Description
+boolean	add(E e)
+Adds the specified element to this set if it is not already present.
+boolean	contains(Object o)
+Returns true if this set contains the specified element.
+Iterator<E>	descendingIterator()
+Returns an iterator over the elements in this set in descending order.
+boolean	isEmpty()
+Returns true if this set contains no elements.
+Iterator<E>	iterator()
+Returns an iterator over the elements in this set in ascending order.
+boolean	remove(Object o)
+Removes the specified element from this set if it is present.
+int	size()
+Returns the number of elements in this set (its cardinality).
 ```
 
 
