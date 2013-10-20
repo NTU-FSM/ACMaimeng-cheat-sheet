@@ -213,6 +213,28 @@ public static void dfs(int currentNode, int depth) {
 ```
 
 #算法 algorithm
+####快排 (quickSort)
+```java
+public static void qsort(int l, int r) {
+    int i = l;
+    int j = r;
+    int x = edge[(l + r) / 2];
+    int tmp;
+    while (true) {
+        while (edge[i] > x) i++;
+        while (edge[j] < x) j--;
+        if (i <= j) {
+            swap(i, j);
+            i++;
+            j--;
+        }
+        if (i > j)
+            break;
+    }
+    if (j > l) qsort(l, j);
+    if (i < r) qsort(i, r);
+}
+```
 ####差分约束系统(?)
         不会，需要学
 
