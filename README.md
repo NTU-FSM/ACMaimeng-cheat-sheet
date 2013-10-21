@@ -354,6 +354,20 @@ dist = new int[N + 1];
         f[start] = false;
     }
 ```
+####Dijkstra最短路 Java可快速加入二叉堆优化？
+```python
+for i=1:n
+     ins=0;
+     for j=1:length(s)
+        if i==s(j)
+           ins=1;
+     end,  end
+     if ins==0
+        v=i;
+        if label(v)>(label(u)+w(u,v))
+           label(v)=(label(u)+w(u,v)); f(v)=u;
+  end, end, end   
+```
 
 ####最大流 Maxflow
 ```
