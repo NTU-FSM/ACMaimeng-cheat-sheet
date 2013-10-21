@@ -282,6 +282,37 @@ public static void qsort(int l, int r) {
     if (i < r) qsort(i, r);
 }
 ```
+
+####最小生成树 prime
+```java
+public int solve()
+{
+	int i,j,Min,v,sum=0;
+	//每次加入一个节点
+	for(i=1;i<n;i++)
+	{
+		Min=MAX.num;
+		v=0;
+		for(j=1;j<=n;j++)
+		if(visit[j]==0&&dis[j]<Min)
+		{
+			Min=dis[j];
+			v=j;
+		}
+		sum+=Min;
+		visit[v]=1;
+		for(j=1;j<=n;j++)
+		if(visit[j]==0&&dis[j]>map[v][j])
+		dis[j]=map[v][j];
+	}
+	return sum;
+}
+```
+####最小生成树 kruskal
+```java
+如果页数不够，就加入
+```
+
 ####差分约束系统(?)
         不会，需要学
         
