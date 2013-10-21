@@ -271,7 +271,75 @@ dist = new int[N + 1];
 ```
 
 ####最大流 Maxflow
-```java
+```
+I will change the code into java asap
+```
+```pascal
+program asdf;
+  var
+    x,y,n,m,z,i,flow,ans:longint;
+    d,num,t:array[0..200] of longint;
+    g,p:array[0..200,0..30] of longint;
+  function min(a,b:longint):longint;
+    begin
+      if a>b then
+        exit(b)
+      else exit(a);
+    end;
+  function dfs(u,flow:longint):longint;
+    var
+      v,now,i:longint;
+    begin
+      if u=m then
+        exit(flow);
+      dfs:=0;
+      for i:=1 to t[u] do
+        begin
+          v:=p[u,i];
+          if (g[u,v]>0)and(d[u]=d[v]+1) then
+            begin
+              now:=dfs(v,min(flow-dfs,g[u,v]));
+              dec(g[u,v],now);
+              inc(g[v,u],now);
+              dfs:=dfs+now;
+              if dfs=flow then
+                exit(dfs);
+            end;
+          end;
+      if d[1]>=m then
+        exit;
+      dec(num[d[u]]);
+      if num[d[u]]=0 then
+        d[1]:=m;
+      inc(d[u]);
+      inc(num[d[u]]);
+    end;
+  begin
+    while not eof do
+      begin
+        readln(n,m);
+        fillchar(t,sizeof(t),0);
+        fillchar(g,sizeof(g),0);
+        for i:=1 to n do
+          begin
+            readln(x,y,z);
+            g[x,y]:=g[x,y]+z;
+            inc(t[x]);
+            p[x,t[x]]:=y;
+            inc(t[y]);
+            p[y,t[y]]:=x;
+          end;
+        fillchar(d,sizeof(d),0);
+        num[0]:=m;
+        ans:=0;
+        while d[1]<m do
+          begin
+            flow:=dfs(1,maxlongint);
+            ans:=ans+flow;
+          end;
+        writeln(ans);
+      end;
+  end.
 ```
 #数学 Mathematic
 
