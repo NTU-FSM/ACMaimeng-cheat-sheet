@@ -19,7 +19,61 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 ####Integer & BigInt
 ```java
 java.math.BigInteger
+//Constructor and Description
+BigInteger(String val)
+Translates the decimal String representation of a BigInteger into a BigInteger.
+BigInteger(String val, int radix)
+Translates the String representation of a BigInteger in the specified radix into a BigInteger.
 
+//Modifier and Type	  Method and Description
+BigInteger	abs()
+Returns a BigInteger whose value is the absolute value of this BigInteger.
+
+BigInteger	add(BigInteger val)
+Returns a BigInteger whose value is (this + val).
+BigInteger	subtract(BigInteger val)
+Returns a BigInteger whose value is (this - val).
+BigInteger	multiply(BigInteger val)
+Returns a BigInteger whose value is (this * val).
+BigInteger	divide(BigInteger val)
+Returns a BigInteger whose value is (this / val).
+BigInteger	negate()
+Returns a BigInteger whose value is (-this).
+BigInteger	pow(int exponent)
+Returns a BigInteger whose value is (thisexponent).
+
+BigInteger	and(BigInteger val)
+Returns a BigInteger whose value is (this & val
+BigInteger	or(BigInteger val)
+Returns a BigInteger whose value is (this | val).
+BigInteger	not()
+Returns a BigInteger whose value is (~this).
+
+BigInteger	shiftLeft(int n)
+Returns a BigInteger whose value is (this << n).
+BigInteger	shiftRight(int n)
+Returns a BigInteger whose value is (this >> n).
+
+BigInteger	mod(BigInteger m)
+Returns a BigInteger whose value is (this mod m).
+BigInteger	remainder(BigInteger val)
+Returns a BigInteger whose value is (this % val).
+BigInteger	gcd(BigInteger val)
+Returns a BigInteger whose value is the greatest common divisor of abs(this) and abs(val).
+
+BigInteger	max(BigInteger val)
+Returns the maximum of this BigInteger and val.
+BigInteger	min(BigInteger val)
+Returns the minimum of this BigInteger and val.
+
+int	compareTo(BigInteger val)
+Compares this BigInteger with the specified BigInteger.
+String	toString(int radix)
+Returns the String representation of this BigInteger in the given radix.
+static BigInteger	valueOf(long val)
+Returns a BigInteger whose value is equal to that of the specified long.
+long	longValue()
+Converts this BigInteger to a long.
 ```
 
 ####建图
