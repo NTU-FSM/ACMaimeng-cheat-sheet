@@ -429,6 +429,7 @@ int main()
     }
     add(0,1,2,0);add(n,n+1,2,0);//此题添加的虚拟源点汇点
     printf("%d\n",cost(0,n+1,n+2));//最小费用
+    //n+1 is the end of flow. n+2 is the number of nodes.
     return 0;
 }
 ```
