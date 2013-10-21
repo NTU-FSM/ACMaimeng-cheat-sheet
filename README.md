@@ -352,7 +352,86 @@ program asdf;
 ps：是网络流EK算法的改进，在求增广路径的时候，把bfs改为带权的spfa，每次求权值最小的增广路。
 ps：要注意一点，逆边cost[i][j] = -cost[j][i]，不能忘了加上去
 ```
-
+```cpp
+#include <iostream>
+#include <cstdio>
+#include <queue>
+using namespace std;
+#define maxn 1005
+#define inf 0x3f3f3f3f
+struct edge{int v,w,f,c,next;} e[50000];
+int vit[maxn],dis[maxn],start[maxn],p[maxn];
+int tot,n,m;
+void _add(int v,int w,int f,int c)
+{
+    e[tot].v=v; e[tot].w=w; e[tot].f=f; e[tot].c=c;
+    e[tot].next=start[v];start[v]=tot++;
+}
+void add(int v,int w,int f,int c)
+{
+    _add(v,w,f,c);
+    _add(w,v,0,-c);
+}
+bool spfa(int s,int t,int n)//寻找费用最小的可增广路
+{
+    int v,w;
+    queue<int> q;
+    for(int i=0;i<n;i++)
+    { p[i]=-1;vit[i]=0;dis[i]=inf; }
+    vit[s]=1;dis[s]=0;q.push(s);
+    while(!q.empty())
+    {
+        v=q.front();q.pop();vit[v]=0;
+        for(int i=start[v];i!=-1;i=e[i].next)
+            if(e[i].f)
+            {
+                w=e[i].w;
+                if(dis[w]>dis[v]+e[i].c)
+                {
+                    dis[w]=dis[v]+e[i].c;
+                    p[w]=i;
+                    if(!vit[w]) {vit[w]=1;q.push(w);}
+                }
+            }
+    }
+    return dis[t]!=inf;
+}
+int cost(int s,int t,int n)
+{
+    int ans=0,flow=inf,i;
+    while(spfa(s,t,n))
+    {
+        ans+=dis[t];
+        for(i=p[t];i!=-1;i=p[e[i].v])//可改进量
+            if(e[i].f<flow) flow=e[i].f;
+        for(i=p[t];i!=-1;i=p[e[i].v])//调整
+        {
+            e[i].f-=flow;
+            e[i^1].f+=flow;
+        }
+    }
+    return ans;
+}
+int main()
+{
+#ifndef ONLINE_JUDGE
+    freopen("in","r",stdin);
+    freopen("out","w",stdout);
+#endif
+    int i,v,w,c;
+    scanf("%d%d",&n,&m);
+    for(i=0;i<n+2;i++) start[i]=-1;tot=0;//初始化
+    for(i=0;i<m;i++)
+    {
+        scanf("%d%d%d",&v,&w,&c);
+        add(v,w,1,c);//添加边 此题为双向边
+        add(w,v,1,c);
+    }
+    add(0,1,2,0);add(n,n+1,2,0);//此题添加的虚拟源点汇点
+    printf("%d\n",cost(0,n+1,n+2));//最小费用
+    return 0;
+}
+```
 
 #数学 Mathematic
 
