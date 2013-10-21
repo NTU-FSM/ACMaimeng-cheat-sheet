@@ -723,6 +723,6 @@ n%(m+1)==0. 先取者必败。
 
 
 ####解析几何
-	y-y0 = k(x-x0), k = tan(a), a = radius
-	(x-a)^2 + (y-b)^2 = r^2
+	line: y-y0 = k(x-x0), k = tan(a), a = radius
+	circle: (x-a)^2 + (y-b)^2 = r^2
 	P(x0, y0), Ax+By+C=0, distance = abs(Ax0+By0+C)/sqrt(A^2+B^2)
