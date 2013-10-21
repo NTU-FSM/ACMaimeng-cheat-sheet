@@ -16,10 +16,6 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         m = Integer.parseInt(data[1]);
 ```
 
-####String (Regular Expression)
-```java
-```
-
 ####Integer & BigInt
 ```java
 ```
