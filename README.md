@@ -37,8 +37,6 @@ BigInteger	multiply(BigInteger val)
 Returns a BigInteger whose value is (this * val).
 BigInteger	divide(BigInteger val)
 Returns a BigInteger whose value is (this / val).
-BigInteger	negate()
-Returns a BigInteger whose value is (-this).
 BigInteger	pow(int exponent)
 Returns a BigInteger whose value is (thisexponent).
 
