@@ -32,25 +32,19 @@ Returns a BigInteger whose value is the absolute value of this BigInteger.
 BigInteger	add(BigInteger val)
 Returns a BigInteger whose value is (this + val).
 BigInteger	subtract(BigInteger val)
-Returns a BigInteger whose value is (this - val).
 BigInteger	multiply(BigInteger val)
-Returns a BigInteger whose value is (this * val).
 BigInteger	divide(BigInteger val)
-Returns a BigInteger whose value is (this / val).
 BigInteger	pow(int exponent)
 Returns a BigInteger whose value is (thisexponent).
 
 BigInteger	and(BigInteger val)
-Returns a BigInteger whose value is (this & val
+Returns a BigInteger whose value is (this & val).
 BigInteger	or(BigInteger val)
-Returns a BigInteger whose value is (this | val).
 BigInteger	not()
-Returns a BigInteger whose value is (~this).
 
 BigInteger	shiftLeft(int n)
 Returns a BigInteger whose value is (this << n).
 BigInteger	shiftRight(int n)
-Returns a BigInteger whose value is (this >> n).
 
 BigInteger	mod(BigInteger m)
 Returns a BigInteger whose value is (this mod m).
@@ -62,7 +56,6 @@ Returns a BigInteger whose value is the greatest common divisor of abs(this) and
 BigInteger	max(BigInteger val)
 Returns the maximum of this BigInteger and val.
 BigInteger	min(BigInteger val)
-Returns the minimum of this BigInteger and val.
 
 int	compareTo(BigInteger val)
 Compares this BigInteger with the specified BigInteger.
