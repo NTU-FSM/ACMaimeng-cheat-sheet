@@ -369,6 +369,34 @@ for i=1:n
   end, end, end   
 ```
 
+
+####二分图 匈牙利算法
+```c
+int path(int u) {
+	int v;
+	for(v=0;v<ny;v++) {
+		if(edge[u][v]&&!visited[v]) {
+			visited[v]=1;
+            if(cy[v]==-1||path(cy[v])) {
+            //如果y集合中的v元素没有匹配或者是v已经匹配，但是从cy[v]中能够找到一条增广路
+            	cx[u]=v;
+            	cy[v]=u;
+            	return 1;
+            }
+      	}
+	}
+	return 0;
+}
+=======
+//main|
+//=====
+for(int i=0;i<=nx;i++) {
+	if(cx[i]==-1) {
+		memset(visited,0,sizeof(visitited));
+		res+=path(i);
+	}
+}
+```
 ####最大流 Maxflow
 ```
 I will change the code into java asap
