@@ -127,39 +127,28 @@ Returns the number of elements in this set (its cardinality).
 ####TreeMap
 ```java
 java.util.TreeMap<K,V>
-
 //Constructor and Description
 TreeMap()
 Constructs a new, empty tree map, using the natural ordering of its keys.
-
 //Modifier and Type    Method and Description
 boolean	containsKey(Object key)
 Returns true if this map contains a mapping for the specified key.
-
 boolean	containsValue(Object value)
 Returns true if this map maps one or more keys to the specified value.
-
 K	firstKey()
 Returns the first (lowest) key currently in this map.
-
 V	get(Object key)
 Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
-
 Set<K>	keySet()
 Returns a Set view of the keys contained in this map.
-
 K	lastKey()
 Returns the last (highest) key currently in this map.
-
 V	put(K key, V value)
 Associates the specified value with the specified key in this map.
-
 void	putAll(Map<? extends K,? extends V> map)
 Copies all of the mappings from the specified map to this map.
-
 V	remove(Object key)
 Removes the mapping for this key from this TreeMap if present.
-
 int	size()
 Returns the number of key-value mappings in this map.
 ```
@@ -210,7 +199,6 @@ int query(int node, int b, int e, int M[MAXIND], int A[MAXN], int i, int j) {
 }
 ```
 ####RMQ(Range Minimum Query)
-[for LCA(Lowest Common Ancestor)](http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=lowestCommonAncestor)
 ```java
 void process2(int M[MAXN][LOGMAXN], int A[MAXN], int N) {
     int i, j;
@@ -314,13 +302,8 @@ public int solve()
 ```
 
 ####差分约束系统(?)
-        不会，需要学
-        
 如果一个系统由n个变量和m个约束条件组成，其中每个约束条件形如xj-xi<=bk(i,j∈[1,n],k∈[1,m]),则其为差分约束系统(system of difference constraints)。亦即，差分约束系统是关于一组变量的特殊不等式组。求解差分约束系统，可以转化成图论的单源最短路径问题。
 观察xj-xi<=bk，会发现它类似最短路中的三角不等式d[v]<=d[u]+w[u,v]，即d[v]-d[u]<=w[u,v]。因此，以每个变量xi为结点，对于约束条件xj-xi<=bk，连接一条边(i,j)，边权为bk。我们再增加一个源点s,s与所有点相连，边权均为0。对这个图，以s为源点运行bellman-ford算法，最终{d[i]}即为一组可行解。(差分约束系统的解的一个特点是，当将所有变量同时增加相同的大小，约束条件依然成立）
-
-####Astar搜索(A*搜索)
-        还不会，需要学
 
 ####广搜 + 最短路 (SPFA)
 ```java
@@ -368,7 +351,6 @@ for i=1:n
            label(v)=(label(u)+w(u,v)); f(v)=u;
   end, end, end   
 ```
-
 
 ####二分图 匈牙利算法
 ```c
@@ -630,7 +612,6 @@ public static int modular_exp(int a, int d, int n) {
 #####（一）巴什博奕（Bash Game）：
 
     只有一堆n个物品，两个人轮流从这堆物品中取物，规定每次至少取一个，最多取m个。最后取光者得胜。
-
     显然，如果n=m+1，那么由于一次最多只能取m个，所以，无论先取者拿走多少个，后取者都能够一次拿走剩余的物品，
     后者取胜。因此我们发现了如何取胜的法则：如果n=（m+1）r+s，（r为任意自然数，s≤m),那么先取者要拿走s个物品，
     如果后取者拿走k（≤m)个，那么先取者再拿走m+1-k个，结果剩下（m+1）（r-1）个，以后保持这样的取法，那么先取者肯定获胜。
