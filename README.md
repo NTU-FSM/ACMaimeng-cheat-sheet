@@ -70,8 +70,7 @@ Converts this BigInteger to a long.
 ####建图
 ```java
 class Edge {
-    public int e;
-    public int l;
+    public int e; public int l;
     public Edge(int e, int l) {
         this.e = e;
         this.l = l;
@@ -105,7 +104,6 @@ java.util.TreeSet<E>
 //Constructor and Description
 TreeSet()
 Constructs a new, empty tree set, sorted according to the natural ordering of its elements.
-
 //Modifier and Type	Method and Description
 boolean	add(E e)
 Adds the specified element to this set if it is not already present.
@@ -138,7 +136,8 @@ Returns true if this map maps one or more keys to the specified value.
 K	firstKey()
 Returns the first (lowest) key currently in this map.
 V	get(Object key)
-Returns the value to which the specified key is mapped, or null if this map contains no mapping for the key.
+Returns the value to which the specified key is mapped
+    or null if this map contains no mapping for the key.
 Set<K>	keySet()
 Returns a Set view of the keys contained in this map.
 K	lastKey()
@@ -152,18 +151,46 @@ Removes the mapping for this key from this TreeMap if present.
 int	size()
 Returns the number of key-value mappings in this map.
 ```
+####堆 (Heap)
+```java
+public static void buildheap() {
+    n = arr.length-1;
+    for(int i = n/2; i >= 0; i--){
+        maxheap(i);
+    }
+}
+public static void maxheap(int i) {
+    left = 2 * i; right = 2 * i + 1;
+    largest = i;
+    if(left <= n && arr[left] > arr[i]) {
+        largest = left;
+    } else {
+        if(right <= n && arr[right] > arr[largest])
+            largest=right;
+    }
+    if(largest != i) {
+        exchange(i, largest); //i and l are index
+        maxheap(largest);
+    }
+}
+public static void sort() {
+    buildheap();
+    for(int i = n; i > 0;i--) {
+        exchange(0, i);
+        n = n - 1;
+        maxheap(0);
+    }
+}
 
+```
 ####线段树(Segment Tree)
 ```java
-void initialize(intnode, int b, int e, int M[MAXIND], int A[MAXN], int N){
+void initialize(intnode, int b, int e, int M[MAXIND], int A[MAXN], int N) {
     if (b == e)
         M[node] = b;
     else {
-        //compute the values in the left and right subtrees
         initialize(2 * node, b, (b + e) / 2, M, A, N);
         initialize(2 * node + 1, (b + e) / 2 + 1, e, M, A, N);
-        //search for the minimum value in the first and 
-        //second half of the interval
         if (A[M[2 * node]] <= A[M[2 * node + 1]])
             M[node] = M[2 * node];
         else
@@ -273,33 +300,27 @@ public static void qsort(int l, int r) {
 
 ####最小生成树 prime
 ```java
-public int solve()
-{
+public int solve() {
 	int i,j,Min,v,sum=0;
 	//每次加入一个节点
-	for(i=1;i<n;i++)
-	{
+	for(i=1;i<n;i++) {
 		Min=MAX.num;
 		v=0;
-		for(j=1;j<=n;j++)
-		if(visit[j]==0&&dis[j]<Min)
-		{
+		for(j=1;j<=n;j++) 
+		if(visit[j]==0&&dis[j]<Min) {
 			Min=dis[j];
 			v=j;
 		}
 		sum+=Min;
 		visit[v]=1;
 		for(j=1;j<=n;j++)
-		if(visit[j]==0&&dis[j]>map[v][j])
-		dis[j]=map[v][j];
+     		if(visit[j]==0&&dis[j]>map[v][j])
+	   	dis[j]=map[v][j];
 	}
 	return sum;
 }
 ```
 ####最小生成树 kruskal
-```java
-如果页数不够，就加入
-```
 
 ####差分约束系统(?)
 如果一个系统由n个变量和m个约束条件组成，其中每个约束条件形如xj-xi<=bk(i,j∈[1,n],k∈[1,m]),则其为差分约束系统(system of difference constraints)。亦即，差分约束系统是关于一组变量的特殊不等式组。求解差分约束系统，可以转化成图论的单源最短路径问题。
@@ -384,71 +405,56 @@ for(int i=0;i<=nx;i++) {
 I will change the code into java asap
 ```
 ```pascal
-program asdf;
+function dfs(u,flow:longint):longint;
   var
-    x,y,n,m,z,i,flow,ans:longint;
-    d,num,t:array[0..200] of longint;
-    g,p:array[0..200,0..30] of longint;
-  function min(a,b:longint):longint;
-    begin
-      if a>b then
-        exit(b)
-      else exit(a);
-    end;
-  function dfs(u,flow:longint):longint;
-    var
-      v,now,i:longint;
-    begin
-      if u=m then
-        exit(flow);
-      dfs:=0;
-      for i:=1 to t[u] do
-        begin
-          v:=p[u,i];
-          if (g[u,v]>0)and(d[u]=d[v]+1) then
-            begin
-              now:=dfs(v,min(flow-dfs,g[u,v]));
-              dec(g[u,v],now);
-              inc(g[v,u],now);
-              dfs:=dfs+now;
-              if dfs=flow then
-                exit(dfs);
-            end;
-          end;
-      if d[1]>=m then
-        exit;
-      dec(num[d[u]]);
-      if num[d[u]]=0 then
-        d[1]:=m;
-      inc(d[u]);
-      inc(num[d[u]]);
-    end;
+    v,now,i:longint;
   begin
-    while not eof do
+    if u=m then
+      exit(flow);
+    dfs:=0;
+    for i:=1 to t[u] do
       begin
-        readln(n,m);
-        fillchar(t,sizeof(t),0);
-        fillchar(g,sizeof(g),0);
-        for i:=1 to n do
+        v:=p[u,i];
+        if (g[u,v]>0)and(d[u]=d[v]+1) then
           begin
-            readln(x,y,z);
-            g[x,y]:=g[x,y]+z;
-            inc(t[x]);
-            p[x,t[x]]:=y;
-            inc(t[y]);
-            p[y,t[y]]:=x;
+            now:=dfs(v,min(flow-dfs,g[u,v]));
+            dec(g[u,v],now); inc(g[v,u],now);
+            dfs:=dfs+now;
+            if dfs=flow then
+              exit(dfs);
           end;
-        fillchar(d,sizeof(d),0);
-        num[0]:=m;
-        ans:=0;
-        while d[1]<m do
-          begin
-            flow:=dfs(1,maxlongint);
-            ans:=ans+flow;
-          end;
-        writeln(ans);
-      end;
-  end.
+        end;
+    if d[1]>=m then
+      exit;
+    dec(num[d[u]]);
+    if num[d[u]]=0 then
+      d[1]:=m;
+    inc(d[u]);
+    inc(num[d[u]]);
+  end;
+begin
+  while not eof do
+    begin
+      readln(n,m);
+      fillchar(t,sizeof(t),0);
+      fillchar(g,sizeof(g),0);
+      for i:=1 to n do
+        begin
+          readln(x,y,z);
+          g[x,y]:=g[x,y]+z;
+          inc(t[x]); p[x,t[x]]:=y;
+          inc(t[y]); p[y,t[y]]:=x;
+        end;
+      fillchar(d,sizeof(d),0);
+      num[0]:=m; ans:=0;
+      while d[1]<m do
+        begin
+          flow:=dfs(1,maxlongint);
+          ans:=ans+flow;
+        end;
+      writeln(ans);
+    end;
+end.
 ```
 
 ####最小费用最大流
@@ -462,41 +468,31 @@ ps：是网络流EK算法的改进，在求增广路径的时候，把bfs改为�
 ps：要注意一点，逆边cost[i][j] = -cost[j][i]，不能忘了加上去
 ```
 ```cpp
-#include <iostream>
-#include <cstdio>
-#include <queue>
-using namespace std;
 #define maxn 1005
 #define inf 0x3f3f3f3f
 struct edge{int v,w,f,c,next;} e[50000];
 int vit[maxn],dis[maxn],start[maxn],p[maxn];
 int tot,n,m;
-void _add(int v,int w,int f,int c)
-{
+void _add(int v,int w,int f,int c) {
     e[tot].v=v; e[tot].w=w; e[tot].f=f; e[tot].c=c;
     e[tot].next=start[v];start[v]=tot++;
 }
-void add(int v,int w,int f,int c)
-{
+void add(int v,int w,int f,int c) {
     _add(v,w,f,c);
     _add(w,v,0,-c);
 }
-bool spfa(int s,int t,int n)//寻找费用最小的可增广路
-{
-    int v,w;
+bool spfa(int s,int t,int n) {
+    int v,w;	//寻找费用最小的可增广路
     queue<int> q;
     for(int i=0;i<n;i++)
     { p[i]=-1;vit[i]=0;dis[i]=inf; }
     vit[s]=1;dis[s]=0;q.push(s);
-    while(!q.empty())
-    {
+    while(!q.empty()) {
         v=q.front();q.pop();vit[v]=0;
         for(int i=start[v];i!=-1;i=e[i].next)
-            if(e[i].f)
-            {
+            if(e[i].f) {
                 w=e[i].w;
-                if(dis[w]>dis[v]+e[i].c)
-                {
+                if(dis[w]>dis[v]+e[i].c) {
                     dis[w]=dis[v]+e[i].c;
                     p[w]=i;
                     if(!vit[w]) {vit[w]=1;q.push(w);}
@@ -505,33 +501,24 @@ bool spfa(int s,int t,int n)//寻找费用最小的可增广路
     }
     return dis[t]!=inf;
 }
-int cost(int s,int t,int n)
-{
+int cost(int s,int t,int n) {
     int ans=0,flow=inf,i;
-    while(spfa(s,t,n))
-    {
+    while(spfa(s,t,n)) {
         ans+=dis[t];
         for(i=p[t];i!=-1;i=p[e[i].v])//可改进量
             if(e[i].f<flow) flow=e[i].f;
-        for(i=p[t];i!=-1;i=p[e[i].v])//调整
-        {
-            e[i].f-=flow;
+        for(i=p[t];i!=-1;i=p[e[i].v]) {
+            e[i].f-=flow;//调整
             e[i^1].f+=flow;
         }
     }
     return ans;
 }
-int main()
-{
-#ifndef ONLINE_JUDGE
-    freopen("in","r",stdin);
-    freopen("out","w",stdout);
-#endif
+int main() {
     int i,v,w,c;
     scanf("%d%d",&n,&m);
     for(i=0;i<n+2;i++) start[i]=-1;tot=0;//初始化
-    for(i=0;i<m;i++)
-    {
+    for(i=0;i<m;i++) {
         scanf("%d%d%d",&v,&w,&c);
         add(v,w,1,c);//添加边 此题为双向边
         add(w,v,1,c);
@@ -623,8 +610,6 @@ n%(m+1)==0. 先取者必败。
     这个游戏还可以有一种变相的玩法：两个人轮流报数，每次至少报一个，最多报十个，谁能报到100者胜。
     
     
-
-
 从一堆100个石子中取石子，最后取完的胜。
 
 #####（二）威佐夫博奕（Wythoff Game）：
@@ -641,7 +626,7 @@ n%(m+1)==0. 先取者必败。
     事实上，若只改变奇异局势（ak，bk）的某一个分量，那么另一个分量不可能在其他奇异局势中，所以必然是非奇异局势。
     如果使（ak，bk）的两个分量同时减少，则由于其差不变，且不可能是其他奇异局势的差，因此也是非奇异局势。
     3。采用适当的方法，可以将非奇异局势变为奇异局势。
-
+    
 
     假设面对的局势是（a,b），若 b = a，则同时从两堆中取走 a 个物体，就变为了奇异局势（0，0）
     如果a = ak ，b > bk，那么，取走b - bk个物体，即变为奇异局势
@@ -702,8 +687,90 @@ n%(m+1)==0. 先取者必败。
     如果Ai中剩下的石子多于K 那么就在Ai中取走K+1-r个则Bi不变 T‘还是0
     如果Ai<=K 那么我们需要重新计算Bi和T‘ 按照上面的方法来做就可以了
 
-
+####中国剩余定理
+```	
+推论1:
+对于 a=ai  (mod ni) 的同余方程,有唯一解
+下面说说由(a1, a2, ..., ak)求a的方法:
+令 mi = n1*n2*...nk / ni;   ci = mi(mf  mod ni);   其中 mi*mf  mod ni = 1;
+则 a = (a1*c1+a2*c2+...+ak*ck)      (mod n)      (注:由此等式可求a%n, 当n很大时)
+剩余定理关键是mf的求法,如果理解了扩展欧几里得 ax+by=d, 就可以想到:
+mi*mf  mod ni = 1 => mi*mf+ni*y=1;
+```
+```
+int egcd(int a, int b, int &x, int &y) {
+    int d;
+    if (b == 0) {
+        x = 1; y = 0; return a;
+    } else {
+        d = egcd(b, a % b, y, x);
+        y -= a / b * x;
+        return d;
+    }
+}
+int lmes() {
+    int i, tm=1, mf, y, ret=0, m;
+    for (i = 0; i < nn; i++) tm *= n[i];
+    for (i = 0; i < nn; i++) {
+        m = tm / n[i];
+        egcd(m, n[i], mf, y);
+        ret += (a[i] * m * (mf % n[i])) % tm;
+    }
+    return (ret+tm) % tm;
+}
+```
+####欧拉函数
+```
+若n是质数p的k次幂，φ(n)=p^k-p^(k-1)=(p-1)p^(k-1)
+设n为正整数，以 φ(n)表示不超过n且与n互素的正整数的个数，
+     称为n的欧拉函数值，这里函数φ：N→N，n→φ(n)称为欧拉函数。
+欧拉函数是积性函数——若m,n互质，φ(mn)=φ(m)φ(n)。
+特殊性质：当n为奇数时，φ(2n)=φ(n), 证明与上述类似。
+```
 ####解析几何
 	line: y-y0 = k(x-x0), k = tan(a), a = radius
 	circle: (x-a)^2 + (y-b)^2 = r^2
 	P(x0, y0), Ax+By+C=0, distance = abs(Ax0+By0+C)/sqrt(A^2+B^2)
+
+
+####动态规划 方程
+```c
+剖分问题1-----石子合并
+	f[i,j] = min(f[i,k]+f[k+1,j]+sum[i,j]);
+
+LCS 最长公共子串
+	f[i,j]={0                      (i=0)&(j=0);
+    	   f[i-1,j-1]+1            (i>0,j>0,x=y[j]);
+       	   max{f[i,j-1]+f[i-1,j]}} (i>0,j>0,x<>y[j]);
+
+组合 递推
+	C[I,j] = C[i-1,j]+C[I-1,j-1]
+	C[I,0] = 1
+最长公共子序列
+	d[0,0]:=0;
+	for i:=1 to n do
+	  for j:=1 to m do
+        if s1[i]=s2[j] then //等价于 if a[i,j]=1 then
+          d[i,j]:=d[i-1,j-1]+1
+        else begin
+          if d[i-1,j]>d[i,j-1] then
+            d[i,j]:=d[i-1,j]
+          else d[i,j]:=d[i,j-1];
+        end;
+
+最长公共不下降子序列
+	for(i=1;i<=l1;i++) {
+  	    max=0;
+  		for(j=1;j<=l2;j++)
+    		if (b[j]<a[i]) {
+      			max=MAX(max, f[j]);
+    		} else if(b[j]==a[i]) {
+      			f[j]=max+1;
+      			ans=MAX(ans,f[j]); 
+    		}
+	}
+	
+01背包——> 简单
+完全背包——> 简单
+多重背包
+```
