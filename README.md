@@ -566,6 +566,10 @@ void solve() {
 }
 ```
 
+####KMP
+
+####Astar
+
 #数学 Mathematic
 
 ####Miller-Rabbin Prime test
