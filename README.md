@@ -16,7 +16,7 @@ BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         m = Integer.parseInt(data[1]);
 ```
 
-####Integer & BigInt
+####Integer & BigInt (very useful)
 ```java
 java.math.BigInteger
 //Constructor and Description
@@ -295,6 +295,7 @@ public static void qsort(int l, int r) {
     }
     if (j > l) qsort(l, j);
     if (i < r) qsort(i, r);
+    //change the edge to your own array
 }
 ```
 
@@ -529,6 +530,12 @@ int main() {
     return 0;
 }
 ```
+
+####最小割最大流
+
+    最重要的在于建图
+    一般题目会比较难
+
 ####强连通分量 Tarjan
 ```cpp
 void tarjan(int i) {
@@ -571,7 +578,7 @@ void solve() {
 ####Astar
 
 #数学 Mathematic
-
+    数学最难之处在于现场推论，容易出现错误。
 ####Miller-Rabbin Prime test
 ```java
 public static boolean isPrime(int n) {
