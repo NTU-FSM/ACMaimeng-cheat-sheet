@@ -2,18 +2,25 @@ ACM-cheat-sheet
 ===============
 
 #基础 Basic
-####Buffered Input
+####Buffered Input/Output
 ```java
 import java.io.*;
 ```
 ```java
 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    int T = Integer.parseInt(br.readLine());
-    String[] data;
-    while (T-- > 0) {
-        data = br.readLine().split(" ");
-        n = Integer.parseInt(data[0]);
-        m = Integer.parseInt(data[1]);
+BufferedWriter bw = new BufferedWriter(new OutputStreamReader(System.out));
+	
+int T = Integer.parseInt(br.readLine());
+String[] data;
+while (T-- > 0) {
+	data = br.readLine().split(" ");
+       	n = Integer.parseInt(data[0]);
+       	m = Integer.parseInt(data[1]);
+       	...
+}
+
+br.close();
+bw.close();
 ```
 
 ####Integer & BigInt (very useful)
