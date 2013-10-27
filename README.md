@@ -18,6 +18,7 @@ while (T-- > 0) {
        	m = Integer.parseInt(data[1]);
        	...
 }
+bw.write("Case #" + m + ":42\n");
 
 br.close();
 bw.close();
