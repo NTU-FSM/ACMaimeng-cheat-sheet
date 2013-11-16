@@ -307,7 +307,7 @@ public static void qsort(int l, int r) {
 }
 ```
 
-####最小生成树 prime
+####最小生成树 Prim's
 ```java
 public int solve() {
 	int i,j,Min,v,sum=0;
@@ -329,7 +329,7 @@ public int solve() {
 	return sum;
 }
 ```
-####最小生成树 kruskal
+####最小生成树 Kruskal
 
 ####差分约束系统(?)
 如果一个系统由n个变量和m个约束条件组成，其中每个约束条件形如xj-xi<=bk(i,j∈[1,n],k∈[1,m]),则其为差分约束系统(system of difference constraints)。亦即，差分约束系统是关于一组变量的特殊不等式组。求解差分约束系统，可以转化成图论的单源最短路径问题。
