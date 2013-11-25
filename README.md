@@ -163,27 +163,27 @@ Returns the number of key-value mappings in this map.
 ```java
 public static void buildheap() {
     n = arr.length-1;
-    for(int i = n/2; i >= 0; i--){
+    for (int i = n/2; i >= 0; i--) {
         maxheap(i);
     }
 }
 public static void maxheap(int i) {
     left = 2 * i; right = 2 * i + 1;
     largest = i;
-    if(left <= n && arr[left] > arr[i]) {
+    if (left <= n && arr[left] > arr[i]) {
         largest = left;
-    } else {
-        if(right <= n && arr[right] > arr[largest])
-            largest=right;
     }
-    if(largest != i) {
+    if (right <= n && arr[right] > arr[largest]) {
+        largest=right;
+    }
+    if (largest != i) {
         exchange(i, largest); //i and l are index
         maxheap(largest);
     }
 }
 public static void sort() {
     buildheap();
-    for(int i = n; i > 0;i--) {
+    for (int i = n; i > 0; i--) {
         exchange(0, i);
         n = n - 1;
         maxheap(0);
