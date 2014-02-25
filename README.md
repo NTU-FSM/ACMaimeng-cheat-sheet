@@ -330,12 +330,15 @@ public int solve() {
 }
 ```
 ####最小生成树 Kruskal
+[see here](https://raw.github.com/lushl9301/acm/master/cf/S01E04/D.java)
 
 ####差分约束系统(?)
 如果一个系统由n个变量和m个约束条件组成，其中每个约束条件形如xj-xi<=bk(i,j∈[1,n],k∈[1,m]),则其为差分约束系统(system of difference constraints)。亦即，差分约束系统是关于一组变量的特殊不等式组。求解差分约束系统，可以转化成图论的单源最短路径问题。
 观察xj-xi<=bk，会发现它类似最短路中的三角不等式d[v]<=d[u]+w[u,v]，即d[v]-d[u]<=w[u,v]。因此，以每个变量xi为结点，对于约束条件xj-xi<=bk，连接一条边(i,j)，边权为bk。我们再增加一个源点s,s与所有点相连，边权均为0。对这个图，以s为源点运行bellman-ford算法，最终{d[i]}即为一组可行解。(差分约束系统的解的一个特点是，当将所有变量同时增加相同的大小，约束条件依然成立）
 
 ####广搜 + 最短路 (SPFA)
+[see here](https://raw.github.com/lushl9301/acm/master/ntuYear2/trainingDay3/poj3259.java)
+
 ```java
 dist = new int[N + 1];
     f = new boolean[N + 1];
@@ -584,9 +587,11 @@ void solve() {
 ####KMP
 
 ####Astar
+越南人你们好
 
 #数学 Mathematic
     数学最难之处在于现场推论，容易出现错误。
+    比如上次acm的关于树的那个题……
 ####Miller-Rabbin Prime test
 ```java
 public static boolean isPrime(int n) {
