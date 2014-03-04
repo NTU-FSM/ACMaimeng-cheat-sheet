@@ -585,6 +585,27 @@ void solve() {
 ```
 
 ####KMP
+// psudo code
+j:=0;
+for i:=1 to n do
+Begin
+   while (j>0) and (P[j+1]<>T[i]) do j:=jump[j];[
+   if P[j+1]=T[i] then j:=j+1;
+   if j=m then
+   Begin
+       writeln('Pattern occurs with shift ',i-m);
+   end;
+end;
+
+// construct jump table
+jump[1]:=0;
+j:=0;
+for i:=2 to m do
+begin
+    while (j>0) and (P[j+1]<>P[i]) do j:=jump[j];
+    if P[j+1]=P[i] then  j:=j+1;
+    jump[i]:=j;
+end;
 
 ####Astar
 越南人你们好
