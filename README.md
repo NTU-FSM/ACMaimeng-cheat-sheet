@@ -585,6 +585,7 @@ void solve() {
 ```
 
 ####KMP
+```
 // psudo code
 j:=0;
 for i:=1 to n do
@@ -606,6 +607,7 @@ begin
     if P[j+1]=P[i] then  j:=j+1;
     jump[i]:=j;
 end;
+```
 
 ####Astar
 越南人你们好
