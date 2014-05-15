@@ -610,8 +610,6 @@ end;
 ```
 
 ```
-
-```
     // Java: find match location
     static int kmp(String t, String p) {
         int[] jump = calculateJumpTable(p);
