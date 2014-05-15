@@ -609,6 +609,81 @@ begin
 end;
 ```
 
+```
+
+```
+    // Java: find match location
+    static int kmp(String t, String p) {
+        int[] jump = calculateJumpTable(p);
+        int j = 0;
+        for (int i = 0; i < t.length(); i++) {
+            while (j>0 && p.charAt(j) != t.charAt(i)) {
+                j = jump[j-1];
+            }
+            if (p.charAt(j) == t.charAt(i)) {
+                j++;
+            }
+            if (j == p.length()) {
+                return i - p.length() + 1;
+            }
+        }
+        return -1;
+    }
+    
+    static int[] calculateJumpTable(String p) {
+        int[] jump = new int[p.length()];
+        int j = 0;
+        for (int i = 1; i < p.length(); i++) {
+            while (j > 0 && p.charAt(j) != p.charAt(i)) {
+                j = jump[j-1];
+            }
+            if (p.charAt(j) == p.charAt(i)) {
+                j++;
+            }
+            jump[i] = j;
+        }
+        return jump;
+    }
+```
+```
+    // Java: find count
+    static int kmp(String t, String p) {
+        int[] jump = calculateJumpTable(p);
+        int j = 0;
+        int count = 0;
+        for (int i = 0; i < t.length(); i++) {
+            while (j>0 && p.charAt(j) != t.charAt(i)) {
+                j = jump[j-1];
+            }
+            if (p.charAt(j) == t.charAt(i)) {
+                j++;
+            }
+            if (j == p.length()) {
+                j = 0;
+                i -= p.length()-1;
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    static int[] calculateJumpTable(String p) {
+        int[] jump = new int[p.length()];
+        int j = 0;
+        for (int i = 1; i < p.length(); i++) {
+            while (j > 0 && p.charAt(j) != p.charAt(i)) {
+                j = jump[j-1];
+            }
+            if (p.charAt(j) == p.charAt(i)) {
+                j++;
+            }
+            jump[i] = j;
+        }
+        return jump;
+    }
+```
+
+
 ####Astar
 越南人你们好
 
